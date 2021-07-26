@@ -60,7 +60,7 @@
 
           if(isset($_POST['signin']))
           {
-            $email = $_POST['email'];
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
             $password = base64_encode($_POST['password']);
             // "SELECT * FROM `people` WHERE name='$name'"
             $sql = "SELECT * FROM `users` WHERE `email`='$email' and `password`='$password'";
