@@ -57,7 +57,7 @@
   </head>
     <?php
 
-    $email = $_GET['email'];
+    $email = mysqli_real_escape_string($conn, $_GET['email']);
     if(isset($_POST['confirm']))
     {
         $new_password = base64_encode($_POST['newpassword']);

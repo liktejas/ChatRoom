@@ -58,10 +58,10 @@
     <form class="form-signin" method="POST">
     <?php
     
-    $email = $_GET['email'];
+    $email = mysqli_real_escape_string($conn, $_GET['email']);
       if(isset($_POST['register']))
       {
-        $name = $_POST['name'];
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
         $password = base64_encode($_POST['password']);
         $repassword = base64_encode($_POST['repassword']);
 

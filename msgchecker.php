@@ -2,7 +2,7 @@
 	session_start();
 	include 'connection.php';
 
-	$name = $_POST['name'];
+	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	// $sql = "SELECT convs, stored_at, ip FROM conv WHERE name = '$name';";
 	$sql = "SELECT `convs`, `ip`, `stored_at` FROM `conv` WHERE chatroom = '$name' ORDER BY `id` DESC";
 	// print_r($sql);
@@ -19,7 +19,7 @@
 			while ($row = mysqli_fetch_assoc($result)) {
 				if($row['ip'] == $remote_ip)
 				{
-					$sql1 = "SELECT `convs`, `ip`, `stored_at` FROM `conv` WHERE chatroom = '$name' AND ip = $remote_ip ORDER BY `id` DESC";
+				$sql1 = "SELECT `convs`, `ip`, `stored_at` FROM `conv` WHERE chatroom = '$name' AND ip = $remote_ip ORDER BY `id` DESC";
 				$res = $res.'<div class="container1">';
 				$res = $res.'<b style="color: #fca400">You</b>';
 				$res = $res."<p>".$row['convs'];

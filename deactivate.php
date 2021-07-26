@@ -5,7 +5,7 @@
      	{
 		   header('Location: '.$base_url.'index.php');
     	}
-    $email = $_SESSION['email'];
+    $email = mysqli_real_escape_string($conn, $_SESSION['email']);
     // print_r($email);
     $sql = "DELETE FROM `users` WHERE `email`='$email'";
     $res = mysqli_query($conn, $sql);

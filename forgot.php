@@ -74,7 +74,7 @@
 
       if(isset($_POST['forgot']))
       {
-        $send_email_to = $_POST['email'];
+        $send_email_to = mysqli_real_escape_string($conn, $_POST['email']);
         $sql = "SELECT * FROM `users` WHERE `email`='$send_email_to'";
         $res = mysqli_query($conn, $sql);
         if(mysqli_num_rows($res) > 0)
